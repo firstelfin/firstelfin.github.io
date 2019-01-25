@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="FirstElfin DreamWorks">
 <meta property="og:description" content="记录tf库的一些知识">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-25T05:34:21.582Z">
+<meta property="og:updated_time" content="2019-01-25T07:07:36.713Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tf.pad()函数">
 <meta name="twitter:description" content="记录tf库的一些知识">
@@ -413,7 +413,7 @@
                 
               
 
-              <time title="创建时间：2019-01-25 12:56:37 / 修改时间：13:34:21" itemprop="dateCreated datePublished" datetime="2019-01-25T12:56:37+08:00">2019-01-25</time>
+              <time title="创建时间：2019-01-25 12:56:37 / 修改时间：15:07:36" itemprop="dateCreated datePublished" datetime="2019-01-25T12:56:37+08:00">2019-01-25</time>
             
 
             
@@ -501,22 +501,22 @@
 
       
         <h1 id="tf-pad-函数参数解析说明"><a href="#tf-pad-函数参数解析说明" class="headerlink" title="tf.pad()函数参数解析说明"></a>tf.pad()函数参数解析说明</h1><h2 id="参数：tf-pad-tensor-paddings-mode-”CONSTANT”-name-None-constant-values-0"><a href="#参数：tf-pad-tensor-paddings-mode-”CONSTANT”-name-None-constant-values-0" class="headerlink" title="参数：tf.pad(tensor, paddings, mode=”CONSTANT”, name=None, constant_values=0)"></a>参数：tf.pad(tensor, paddings, mode=”CONSTANT”, name=None, constant_values=0)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Args:</span><br><span class="line">  tensor: A `Tensor`.</span><br><span class="line">  paddings: A `Tensor` of type `int32`.</span><br><span class="line">  mode: One of <span class="string">"CONSTANT"</span>, <span class="string">"REFLECT"</span>, <span class="keyword">or</span> <span class="string">"SYMMETRIC"</span> (case-insensitive)</span><br><span class="line">  name: A name <span class="keyword">for</span> the operation (optional).</span><br><span class="line">  constant_values: In <span class="string">"CONSTANT"</span> mode, the scalar pad value to use. Must    be same type <span class="keyword">as</span> `tensor`.</span><br></pre></td></tr></table></figure>
-<p>​    tensor: 需要进行操作的一个tensorflow张量。</p>
-<p>​    padding: 本函数最重要的形参，它控制着如何补数。</p>
-<p>​    mode: 控制函数补说明数，”CONSTANT”是常数；”REFLECT”，”SYMMETRIC”都是关于原数据的一种映射，前者是以元数据的边界数据为镜面反射一一对应，后者的镜面是边界数据与补数之间。</p>
-<p>​    name: 本次操作的名字。</p>
-<p>​    constant_values: 指定补常数时的数值，默认为0。</p>
-<h2 id="padding参数详解"><a href="#padding参数详解" class="headerlink" title="padding参数详解"></a>padding参数详解</h2><p>​    注意在这里传入的padding实参的shape必须和tensor参数的shape对应。一般我们的数据有四个维度[batch, height, width, channels]，那么我们就需要传入四对数：[[b1,b2], [h1,h2], [w1,w2],[c1,c2]]。每队数的前者表示在该维度的前面补数多少，后者同理。如果没有batch、channels维度，那么就值传入两组。下面我们通过python代码及其执行情况进行说明。</p>
+<p>　　tensor: 需要进行操作的一个tensorflow张量。</p>
+<p>　　padding: 本函数最重要的形参，它控制着如何补数。</p>
+<p>　　mode: 控制函数补数的三种类型，其中”CONSTANT”是常数；”REFLECT”，”SYMMETRIC”都是关于原数据的一种映射，前者是以元数据的边界数据为镜面反射一一对应，后者的镜面是边界数据与补数之间。</p>
+<p>　　name: 本次操作的名字。</p>
+<p>　　constant_values: 指定补常数时的数值，默认为0。</p>
+<h2 id="padding参数详解"><a href="#padding参数详解" class="headerlink" title="padding参数详解"></a>padding参数详解</h2><p>　　注意在这里传入的padding实参的shape必须和tensor参数的shape对应。一般我们的数据有四个维度[batch, height, width, channels]，那么我们就需要传入四对数：[[b1,b2], [h1,h2], [w1,w2],[c1,c2]]。每队数的前者表示在该维度的前面补数多少，后者同理。如果没有batch、channels维度，那么就值传入两组。下面我们通过python代码及其执行情况进行说明。</p>
 <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="两个维度-height-width-的情形"><a href="#两个维度-height-width-的情形" class="headerlink" title="两个维度[height, width]的情形"></a>两个维度[height, width]的情形</h3><p>python代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line">inputs = tf.constant([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]])</span><br><span class="line">inputs = tf.pad(inputs, [[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">1</span>, <span class="number">2</span>]])</span><br><span class="line">sess = tf.Session()</span><br><span class="line">print(sess.run(inputs))</span><br></pre></td></tr></table></figure>
 <p>执行结果：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[[<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]]</span><br></pre></td></tr></table></figure>
-<p>​    这里在高这个维度上，前面补了一行0，后面补了两行0；在宽的维度上，前面补了一行0，后面补了两行0。</p>
+<p>　　这里在高这个维度上，前面补了一行0，后面补了两行0；在宽的维度上，前面补了一行0，后面补了两行0。</p>
 <h3 id="四个维度的情形"><a href="#四个维度的情形" class="headerlink" title="四个维度的情形"></a>四个维度的情形</h3><p>python代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test = tf.constant(</span><br><span class="line">    [[[[<span class="number">1</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">2</span>]], [[<span class="number">4</span>, <span class="number">4</span>], [<span class="number">5</span>, <span class="number">5</span>]]], [[[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]], [[<span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>]]]])</span><br><span class="line">print(sess.run(test))</span><br></pre></td></tr></table></figure>
 <p>执行结果：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[[[[<span class="number">1</span> <span class="number">1</span>]</span><br><span class="line">   [<span class="number">2</span> <span class="number">2</span>]]</span><br><span class="line"></span><br><span class="line">  [[<span class="number">4</span> <span class="number">4</span>]</span><br><span class="line">   [<span class="number">5</span> <span class="number">5</span>]]]</span><br><span class="line"></span><br><span class="line"> [[[<span class="number">1</span> <span class="number">2</span>]</span><br><span class="line">   [<span class="number">3</span> <span class="number">4</span>]]</span><br><span class="line"></span><br><span class="line">  [[<span class="number">5</span> <span class="number">6</span>]</span><br><span class="line">   [<span class="number">7</span> <span class="number">8</span>]]]]</span><br></pre></td></tr></table></figure>
-<p>​    这里给了一个四维的tensor，下面我们看一下padding之后的情形。</p>
+<p>　　这里给了一个四维的tensor，下面我们看一下padding之后的情形。</p>
 <p>python代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test = tf.pad(test, [[<span class="number">0</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">0</span>]])</span><br><span class="line">print(sess.run(test))</span><br></pre></td></tr></table></figure>
 <p>执行结果：</p>
@@ -1261,5 +1261,5 @@
   <script type="text/javascript" src="/js/src/love.js"></script>
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tsumiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tsumiki.model.json"},"display":{"position":"left","hOffset":-40,"vOffset":-30,"width":120,"height":240},"mobile":{"show":true},"log":false});</script></body>
 </html>
