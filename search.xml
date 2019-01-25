@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[tf.pad()函数剖析]]></title>
+    <url>%2F2019%2F01%2F25%2Fartical%2F</url>
+    <content type="text"><![CDATA[tf.pad()函数参数解析说明参数：tf.pad(tensor, paddings, mode=”CONSTANT”, name=None, constant_values=0)123456Args: tensor: A `Tensor`. paddings: A `Tensor` of type `int32`. mode: One of "CONSTANT", "REFLECT", or "SYMMETRIC" (case-insensitive) name: A name for the operation (optional). constant_values: In "CONSTANT" mode, the scalar pad value to use. Must be same type as `tensor`. ​ tensor: 需要进行操作的一个tensorflow张量。 ​ padding: 本函数最重要的形参，它控制着如何补数。 ​ mode: 控制函数补说明数，”CONSTANT”是常数；”REFLECT”，”SYMMETRIC”都是关于原数据的一种映射，前者是以元数据的边界数据为镜面反射一一对应，后者的镜面是边界数据与补数之间。 ​ name: 本次操作的名字。 ​ constant_values: 指定补常数时的数值，默认为0。 padding参数详解​ 注意在这里传入的padding实参的shape必须和tensor参数的shape对应。一般我们的数据有四个维度[batch, height, width, channels]，那么我们就需要传入四对数：[[b1,b2], [h1,h2], [w1,w2],[c1,c2]]。每队数的前者表示在该维度的前面补数多少，后者同理。如果没有batch、channels维度，那么就值传入两组。下面我们通过python代码及其执行情况进行说明。 案例###两个维度[height, width]的情形 python代码： 123456import tensorflow as tfinputs = tf.constant([[1, 2, 3], [4, 5, 6], [7, 8, 9]])inputs = tf.pad(inputs, [[1, 2], [1, 2]])sess = tf.Session()print(sess.run(inputs)) 执行结果： ​ [[0 0 0 0 0 0]​ [0 1 2 3 0 0]​ [0 4 5 6 0 0]​ [0 7 8 9 0 0]​ [0 0 0 0 0 0]​ [0 0 0 0 0 0]] ​ 这里在高这个维度上，前面补了一行0，后面补了两行0；在宽的维度上，前面补了一行0，后面补了两行0。 python代码： 123test = tf.constant( [[[[1, 1], [2, 2]], [[4, 4], [5, 5]]], [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]])print(sess.run(test)) 执行结果： ​ [[[[1 1]​ [2 2]]​ [[4 4]​ [5 5]]]​ [[[1 2]​ [3 4]]​ [[5 6]​ [7 8]]]] ​ 这里给了一个四维的tensor，下面我们看一下pad之后的情形。 python代码： 12test = tf.pad(test, [[0, 0], [1, 1], [0, 1], [0, 0]])print(sess.run(test)) 执行结果： ​ [[[[0 0]​ [0 0]​ [0 0]] ​ [[1 1]​ [2 2]​ [0 0]] ​ [[4 4]​ [5 5]​ [0 0]] ​ [[0 0]​ [0 0]​ [0 0]]] ​ [[[0 0]​ [0 0]​ [0 0]] ​ [[1 2]​ [3 4]​ [0 0]] ​ [[5 6]​ [7 8]​ [0 0]] ​ [[0 0]​ [0 0]​ [0 0]]]]]]></content>
+      <categories>
+        <category>tensorflow知识点</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2019%2F01%2F23%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
