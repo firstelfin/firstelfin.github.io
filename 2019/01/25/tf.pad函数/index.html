@@ -105,20 +105,25 @@
   daovoice('update');
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="FirstElfin DreamWorks">
-<meta property="og:url" content="https://firstelfin.github.io/archives/2019/01/index.html">
+  <meta name="description" content="记录tf库的一些知识">
+<meta name="keywords" content="tensorflow,pad函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tf.pad()函数剖析">
+<meta property="og:url" content="https://firstelfin.github.io/2019/01/25/tf.pad函数/index.html">
 <meta property="og:site_name" content="FirstElfin DreamWorks">
+<meta property="og:description" content="记录tf库的一些知识">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-25T04:55:54.144Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FirstElfin DreamWorks">
+<meta name="twitter:title" content="tf.pad()函数剖析">
+<meta name="twitter:description" content="记录tf库的一些知识">
 
 
 
 
 
 
-  <link rel="canonical" href="https://firstelfin.github.io/archives/2019/01/">
+  <link rel="canonical" href="https://firstelfin.github.io/2019/01/25/tf.pad函数/">
 
 
 
@@ -128,7 +133,7 @@
   };
 </script>
 
-  <title>归档 | FirstElfin DreamWorks</title>
+  <title>tf.pad()函数剖析 | FirstElfin DreamWorks</title>
   
 
 
@@ -176,7 +181,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -265,7 +270,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -294,25 +299,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -368,148 +354,256 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://firstelfin.github.io/2019/01/25/tf.pad函数/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FirstElfin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/feiwutouxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FirstElfin DreamWorks">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">tf.pad()函数剖析
+
+              
+            
+          </h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-25 11:51:59 / 修改时间：12:55:54" itemprop="dateCreated datePublished" datetime="2019-01-25T11:51:59+08:00">2019-01-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 3 篇日志。 继续努力。
-      </span>
-      
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/tensorflow知识点/" itemprop="url" rel="index"><span itemprop="name">tensorflow知识点</span></a></span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/01/25/tf-pad函数/" itemprop="url">
+          
             
-              <span itemprop="name">tf.pad()函数</span>
             
-          </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-25T12:56:37+08:00" content="2019-01-25">
-          01-25
-        </time>
-      </div>
+          
+          
 
-    </header>
-  </article>
+          
 
+          
+            <div class="post-symbolscount">
+              
 
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+            <div class="post-description">记录tf库的一些知识</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/01/25/tf.pad函数/" itemprop="url">
-            
-              <span itemprop="name">tf.pad()函数剖析</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-25T11:51:59+08:00" content="2019-01-25">
-          01-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/01/23/hello-world/" itemprop="url">
-            
-              <span itemprop="name">Hello World</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-23T09:01:31+08:00" content="2019-01-23">
-          01-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h1 id="tf-pad-函数参数解析说明"><a href="#tf-pad-函数参数解析说明" class="headerlink" title="tf.pad()函数参数解析说明"></a>tf.pad()函数参数解析说明</h1><h2 id="参数：tf-pad-tensor-paddings-mode-”CONSTANT”-name-None-constant-values-0"><a href="#参数：tf-pad-tensor-paddings-mode-”CONSTANT”-name-None-constant-values-0" class="headerlink" title="参数：tf.pad(tensor, paddings, mode=”CONSTANT”, name=None, constant_values=0)"></a>参数：tf.pad(tensor, paddings, mode=”CONSTANT”, name=None, constant_values=0)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Args:</span><br><span class="line">  tensor: A `Tensor`.</span><br><span class="line">  paddings: A `Tensor` of type `int32`.</span><br><span class="line">  mode: One of <span class="string">"CONSTANT"</span>, <span class="string">"REFLECT"</span>, <span class="keyword">or</span> <span class="string">"SYMMETRIC"</span> (case-insensitive)</span><br><span class="line">  name: A name <span class="keyword">for</span> the operation (optional).</span><br><span class="line">  constant_values: In <span class="string">"CONSTANT"</span> mode, the scalar pad value to use. Must    be same type <span class="keyword">as</span> `tensor`.</span><br></pre></td></tr></table></figure>
+<p>​    tensor: 需要进行操作的一个tensorflow张量。</p>
+<p>​    padding: 本函数最重要的形参，它控制着如何补数。</p>
+<p>​    mode: 控制函数补说明数，”CONSTANT”是常数；”REFLECT”，”SYMMETRIC”都是关于原数据的一种映射，前者是以元数据的边界数据为镜面反射一一对应，后者的镜面是边界数据与补数之间。</p>
+<p>​    name: 本次操作的名字。</p>
+<p>​    constant_values: 指定补常数时的数值，默认为0。</p>
+<h2 id="padding参数详解"><a href="#padding参数详解" class="headerlink" title="padding参数详解"></a>padding参数详解</h2><p>​    注意在这里传入的padding实参的shape必须和tensor参数的shape对应。一般我们的数据有四个维度[batch, height, width, channels]，那么我们就需要传入四对数：[[b1,b2], [h1,h2], [w1,w2],[c1,c2]]。每队数的前者表示在该维度的前面补数多少，后者同理。如果没有batch、channels维度，那么就值传入两组。下面我们通过python代码及其执行情况进行说明。</p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>###两个维度[height, width]的情形</p>
+<p>python代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line">inputs = tf.constant([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]])</span><br><span class="line">inputs = tf.pad(inputs, [[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">1</span>, <span class="number">2</span>]])</span><br><span class="line">sess = tf.Session()</span><br><span class="line">print(sess.run(inputs))</span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<p>​    [[0 0 0 0 0 0]<br>​     [0 1 2 3 0 0]<br>​     [0 4 5 6 0 0]<br>​     [0 7 8 9 0 0]<br>​     [0 0 0 0 0 0]<br>​     [0 0 0 0 0 0]]</p>
+<p>​    这里在高这个维度上，前面补了一行0，后面补了两行0；在宽的维度上，前面补了一行0，后面补了两行0。</p>
+<p>python代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test = tf.constant(</span><br><span class="line">    [[[[<span class="number">1</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">2</span>]], [[<span class="number">4</span>, <span class="number">4</span>], [<span class="number">5</span>, <span class="number">5</span>]]], [[[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]], [[<span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>]]]])</span><br><span class="line">print(sess.run(test))</span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<p>​    [[[[1 1]<br>​            [2 2]]<br>​           [[4 4]<br>​            [5 5]]]<br>​     [[[1 2]<br>​           [3 4]]<br>​          [[5 6]<br>​           [7 8]]]]</p>
+<p>​    这里给了一个四维的tensor，下面我们看一下pad之后的情形。</p>
+<p>python代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test = tf.pad(test, [[<span class="number">0</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">0</span>]])</span><br><span class="line">print(sess.run(test))</span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<p>​    [[[[0 0]<br>​       [0 0]<br>​       [0 0]]</p>
+<p>​      [[1 1]<br>​       [2 2]<br>​       [0 0]]</p>
+<p>​      [[4 4]<br>​       [5 5]<br>​       [0 0]]</p>
+<p>​      [[0 0]<br>​       [0 0]<br>​       [0 0]]]</p>
+<p>​     [[[0 0]<br>​       [0 0]<br>​       [0 0]]</p>
+<p>​      [[1 2]<br>​       [3 4]<br>​       [0 0]]</p>
+<p>​      [[5 6]<br>​       [7 8]<br>​       [0 0]]</p>
+<p>​      [[0 0]<br>​       [0 0]<br>​       [0 0]]]]</p>
 
       
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tensorflow/" rel="tag"># tensorflow</a>
+          
+            <a href="/tags/pad函数/" rel="tag"># pad函数</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/23/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/25/tf-pad函数/" rel="prev" title="tf.pad()函数">
+                tf.pad()函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -530,8 +624,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -631,6 +734,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#tf-pad-函数参数解析说明"><span class="nav-number">1.</span> <span class="nav-text">tf.pad()函数参数解析说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数：tf-pad-tensor-paddings-mode-”CONSTANT”-name-None-constant-values-0"><span class="nav-number">1.1.</span> <span class="nav-text">参数：tf.pad(tensor, paddings, mode=”CONSTANT”, name=None, constant_values=0)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#padding参数详解"><span class="nav-number">1.2.</span> <span class="nav-text">padding参数详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#案例"><span class="nav-number">1.3.</span> <span class="nav-text">案例</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -776,6 +896,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
 
   
 
@@ -786,6 +910,8 @@
 
   
 
+
+  
 
 
   
